@@ -35,12 +35,13 @@ import UnknownPropertyError from "./UnknownPropertyError";
  * 
  * Calling the parent implementation must be done at the end of the constructor
  */
-class BaseObject {
+export default class BaseObject {
     /**
-     * @deprecated Use the `name` property instead
+     * This is used to return the class name of the instantiate object
+     * To return a class name of an uninstantiated object just use the Object's static `name` property
      */
-    static get className() {
-        return this.name 
+    className() {
+        return this.constructor.name;
     }
     
     constructor(config = {}) {
