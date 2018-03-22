@@ -1,6 +1,7 @@
 import InvalidCallError from "./InvalidCallError";
 import UnknownPropertyError from "./UnknownPropertyError";
 import { ucfirst } from "locutus/php/strings";
+import { empty } from "locutus/php/var";
 
 /**
  * BaseObject is the base class that is used to implement custom getters and setters
@@ -37,17 +38,21 @@ import { ucfirst } from "locutus/php/strings";
  * Calling the parent implementation must be done at the end of the constructor
  */
 export default class BaseObject {
-    /**
-     * This is used to return the class name of the instantiate object
-     * To return a class name of an uninstantiated object just use the Object's static `name` property
-     */
-    className() {
-        return this.constructor.name;
-    }
     
     constructor(config = {}) {
+        if(!empty(config)) {
+            Object.assign(this, config);
+        }
         this.init();
         return new Proxy(this, this);
+    }
+
+    /**
+     * This is an alias used to return the class name of the instantiated object
+     * To return a class name of an uninstantiated object just use the Object's static `name` property
+     */
+    get className() {
+        return this.constructor.name;
     }
     
     /**
