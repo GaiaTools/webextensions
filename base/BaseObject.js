@@ -1,6 +1,6 @@
 import InvalidCallError from "./InvalidCallError";
 import UnknownPropertyError from "./UnknownPropertyError";
-import ucfirst from 'locutus/php/strings/ucfirst';
+import { ucfirst } from "locutus/php/strings";
 
 /**
  * BaseObject is the base class that is used to implement custom getters and setters
