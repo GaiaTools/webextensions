@@ -39,6 +39,10 @@ import { empty } from "locutus/php/var";
  */
 export default class BaseObject {
     
+    /**
+     * @param {Object} config - An object of properties to set on the instantiated class
+     * @returns {Object} - Returns a new instance of the class
+     */
     constructor(config = {}) {
         if(!empty(config)) {
             Object.assign(this, config);
@@ -50,6 +54,8 @@ export default class BaseObject {
     /**
      * This is an alias used to return the class name of the instantiated object
      * To return a class name of an uninstantiated object just use the Object's static `name` property
+     * 
+     * @returns {string} - the class name of the instaniated object
      */
     get className() {
         return this.constructor.name;
@@ -64,9 +70,11 @@ export default class BaseObject {
      * get is used to implement a custom getter for the proxy object
      * it will get a direct property or call the custom getter method if it exists
      * 
-     * @param {*} target 
-     * @param {*} prop 
-     * @returns {*}
+     * 
+     * 
+     * @param {Object} target - The object to get the property from
+     * @param {string} prop - The property to be retrieved from the object
+     * @returns {*} - The property of the object
      * @throws InvalidCallError
      * @throws UnknownPropertyError
      */
@@ -89,10 +97,10 @@ export default class BaseObject {
      * set is used to implement a custom setter for the proxy object 
      * it will set a direct property or call the custom setter method if it exists and pass it the value
      * 
-     * @param {*} target 
-     * @param {*} prop 
-     * @param {*} value 
-     * @returns {boolean}
+     * @param {Object} target - The object to set the property on
+     * @param {string} prop - The property to be set 
+     * @param {*} value - The value of the property to be set
+     * @returns {boolean} - Returns true if the property was set
      * @throws InvalidCallError
      * @throws UnknownPropertyError
      */
@@ -119,9 +127,9 @@ export default class BaseObject {
      * Note: properties are not actually deleted because of how custom getters and setters work. 
      * It's set to null and that will allow garbage collection for the old value
      * 
-     * @param {*} target The object to modify
-     * @param {*} prop The object property to modify
-     * @returns {boolean|void}
+     * @param {Object} target - The object to modify
+     * @param {string} prop - The object property to modify
+     * @returns {boolean} - Returns true if the property was set to null 
      * @throws InvalidCallError
      */
     deleteProperty(target, prop) {
