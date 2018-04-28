@@ -1,5 +1,7 @@
-export default class UnknownClassError extends ReferenceError {
-    constructor() {
-        this.name = UnknownClassError.name;
-    }
+import BaseError from "./BaseError";
+
+export default class UnknownClassError extends BaseError {
+	constructor(message) {
+		super(message);
+	}
 }

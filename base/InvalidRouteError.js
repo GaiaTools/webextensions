@@ -1,5 +1,7 @@
-export default class InvalidRouteError extends Error {
-    constructor() {
-        this.name = InvalidRouteError.name;
-    }
+import BaseError from "./BaseError";
+
+export default class InvalidRouteError extends BaseError {
+	constructor(message) {
+		super(message);
+	}
 }

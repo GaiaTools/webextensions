@@ -1,5 +1,7 @@
-export default class NotSupportedError extends Error {
-    constructor() {
-        this.name = NotSupportedError.name;
-    }
+import BaseError from "./BaseError";
+
+export default class NotSupportedError extends BaseError {
+	constructor(message) {
+		super(message);
+	}
 }

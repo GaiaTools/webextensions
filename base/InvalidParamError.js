@@ -1,5 +1,7 @@
-export default class InvalidParamError extends TypeError {
-    constructor() {
-        this.name = InvalidParamError.name;
-    }
+import BaseError from "./BaseError";
+
+export default class InvalidParamError extends BaseError {
+	constructor(message) {
+		super(message);
+	}
 }

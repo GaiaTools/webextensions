@@ -1,5 +1,7 @@
-export default class InvalidConfigError extends Error {
-    constructor() {
-        this.name =  InvalidConfigError.name;
-    }
+import BaseError from "./BaseError";
+
+export default class InvalidConfigError extends BaseError {
+	constructor(message) {
+		super(message);
+	}
 }

@@ -1,5 +1,7 @@
-export default class UnknownPropertyError extends ReferenceError {
-    constructor() {
-        this.name = UnknownPropertyError.name;
-    }
+import BaseError from "./BaseError";
+
+export default class UnknownPropertyError extends BaseError {
+	constructor(message) {
+		super(message);
+	}
 }
